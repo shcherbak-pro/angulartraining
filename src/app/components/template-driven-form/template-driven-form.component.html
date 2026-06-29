@@ -1,1 +1,31 @@
-<p>template-driven-form works!</p>
+<header class="page-header">
+  <p class="page-kicker">ngModel</p>
+  <h2 class="page-title">Template-driven input</h2>
+  <p class="page-subtitle">A small two-way binding example with a Material input field.</p>
+</header>
+
+<div class="demo-grid">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Live input</mat-card-title>
+      <mat-card-subtitle>[(ngModel)] binding</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Input text</mat-label>
+        <input matInput type="text" [(ngModel)]="inputValue" placeholder="Type something">
+      </mat-form-field>
+      <p class="live-value">{{ inputValue || 'Your text will appear here.' }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Training note</mat-card-title>
+      <mat-card-subtitle>Two-way binding syntax</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <pre class="code-preview">&lt;input [(ngModel)]=&quot;inputValue&quot;&gt;</pre>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,10 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { ShadowDirective } from '../../directives/shadow.directive';
 
 @Component({
   selector: 'app-input',
-  imports: [ShadowDirective],
+  imports: [RouterLink, MatButtonModule, MatCardModule, MatDividerModule, ShadowDirective],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css'
 })

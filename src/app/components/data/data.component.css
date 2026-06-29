@@ -1,9 +1,10 @@
-.box {
-  width: 150px;
-  height: 150px;
-  padding: 5px;
-  margin: 10px;
-  border: 1px solid black;
-  background: yellowgreen;
-  display: block;
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.task-card p {
+  margin: 0 0 16px;
+  color: var(--app-muted);
 }

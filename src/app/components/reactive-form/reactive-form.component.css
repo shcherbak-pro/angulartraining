@@ -1,0 +1,10 @@
+.preview-line {
+  margin: 0;
+  color: var(--app-muted);
+}
+
+.actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

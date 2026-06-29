@@ -1,40 +1,55 @@
-# Migration Report: Angular 8 to Angular 22
+# Angular Training UI Refresh Report
 
-## Summary
+## Scope
 
-The project was migrated from the old Angular 8 CLI structure to a modern Angular 22 application structure.
+This update keeps the Angular 22 migration and refreshes the UI layer so the training project looks like a small real website instead of a raw demo playground.
 
 ## Main changes
 
-- Replaced Angular 8 dependencies with Angular 22 dependencies.
-- Removed obsolete Angular 8 tooling:
-  - `e2e/`
-  - Protractor config
-  - TSLint config
-  - old `browserslist`
-  - old `polyfills.ts`
-  - old `test.ts`
-- Migrated from `NgModule` bootstrap to `bootstrapApplication`.
-- Converted components, directive, and pipe to standalone Angular APIs.
-- Replaced old router module with `provideRouter` and route definitions in `app.routes.ts`.
-- Enabled hash-based routing to make the SPA safer on GitHub Pages.
-- Kept the training examples:
+- Added Angular Material dependencies:
+  - `@angular/material`
+  - `@angular/cdk`
+  - `@angular/animations`
+- Added async animations provider in `app.config.ts`.
+- Rebuilt the app shell:
+  - sticky top toolbar
+  - brand block
+  - Material navigation buttons
+  - hero section
+  - shared content card container
+- Reworked pages with Material components:
+  - `mat-card`
+  - `mat-button`
+  - `mat-form-field`
+  - `mat-input`
+  - `mat-select`
+  - `mat-checkbox`
+  - `mat-chip`
+- Replaced old Bootstrap-style UI with clean Material-based CSS.
+- Removed Bootstrap CDN import from global styles.
+- Kept all training examples:
   - routing
-  - route parameters
-  - input/output component communication
-  - services
-  - pipes
-  - directives
-  - template-driven forms
-  - reactive forms
-- Added GitHub Pages deployment workflow.
+  - route params
+  - input/output communication
+  - service usage
+  - custom pipe
+  - custom directive
+  - template-driven form
+  - reactive form
+- Kept GitHub Pages workflow with:
+  - Node 24
+  - `package-manager-cache: false`
+  - `npm install` against public npm registry
+  - dynamic base href based on repository name
 
 ## Notes
 
-`package-lock.json` is intentionally not included. The GitHub Actions workflow uses `npm install` with the public npm registry and disables automatic setup-node caching to avoid lockfile/cache errors during web-only repository updates.
+`package-lock.json` is intentionally not included because the previous lockfile could contain environment-specific registry URLs. The GitHub Actions workflow uses `npm install` instead of `npm ci` for now.
 
-When you can work locally with the repository, you can regenerate a clean lockfile with:
+When working locally, a clean lockfile can be generated later with:
 
 ```bash
 npm install --package-lock-only --registry=https://registry.npmjs.org/
 ```
+
+After that, the workflow can be switched back from `npm install` to `npm ci`.

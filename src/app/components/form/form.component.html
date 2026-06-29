@@ -1,36 +1,65 @@
-<hr>
-<h1>My template driven Form</h1>
+<header class="page-header">
+  <p class="page-kicker">Template-driven form</p>
+  <h2 class="page-title">Registration example</h2>
+  <p class="page-subtitle">
+    Same training logic, but presented with Material form fields, select, checkbox and validation messages.
+  </p>
+</header>
 
-<div *ngIf="!submitted; else elseBlock">Status form is Not Submitted</div>
-<ng-template #elseBlock>Submitted</ng-template>
+<div class="demo-grid">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>User form</mat-card-title>
+      <mat-card-subtitle>{{ submitted ? 'Submitted' : 'Not submitted yet' }}</mat-card-subtitle>
+    </mat-card-header>
 
-<form #regForm="ngForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <input #email="ngModel" type="email" class="form-control" placeholder="Enter email" [(ngModel)]="user.email" name="email" required #spy>
-    <br>TODO: remove this: {{ spy.className }}
-    <div [hidden]="email.valid" class="alert alert-danger">
-      Name is required
-    </div>
-  </div>
+    <mat-card-content>
+      <form #regForm="ngForm" (ngSubmit)="onSubmit()" class="demo-stack">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input #email="ngModel" matInput type="email" placeholder="name@example.com" [(ngModel)]="user.email" name="email" required email>
+          @if (email.invalid && email.touched) {
+            <mat-error>Please enter a valid email.</mat-error>
+          }
+        </mat-form-field>
 
-  <div class="form-group">
-    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" name="password" required>
-  </div>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input #password="ngModel" matInput type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required minlength="3">
+          @if (password.invalid && password.touched) {
+            <mat-error>Password is required, minimum 3 characters.</mat-error>
+          }
+        </mat-form-field>
 
-  <div class="form-group">
-    <select id="select" class="form-control" [(ngModel)]="user.gender" name="gender">
-      <option *ngFor="let opt of gender" [value]="opt">{{ opt }}</option>
-    </select>
-  </div>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Gender</mat-label>
+          <mat-select [(ngModel)]="user.gender" name="gender" required>
+            @for (opt of gender; track opt) {
+              <mat-option [value]="opt">{{ opt }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
 
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
+        <mat-checkbox [(ngModel)]="acceptedTerms" name="acceptedTerms">
+          I understand this is a training form
+        </mat-checkbox>
 
-  <button type="submit" class="btn btn-primary" [disabled]="!regForm.form.valid">Submit</button>
-</form>
+        <div class="actions-row">
+          <button mat-flat-button type="submit" [disabled]="regForm.invalid">Submit</button>
+          <button mat-stroked-button type="button" (click)="regForm.resetForm(); submitted = false; acceptedTerms = false">Reset</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 
-<hr>
-actual value of user object:
-{{ user | json }}
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Current model</mat-card-title>
+      <mat-card-subtitle>Two-way binding with ngModel</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <span class="status-pill">{{ submitted ? 'Submitted' : 'Draft' }}</span>
+      <pre class="code-preview">{{ user | json }}</pre>
+    </mat-card-content>
+  </mat-card>
+</div>

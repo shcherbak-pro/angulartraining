@@ -1,0 +1,8 @@
+.child-card {
+  height: 100%;
+}
+
+p {
+  margin: 0;
+  color: var(--app-muted);
+}

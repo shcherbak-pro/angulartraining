@@ -1,14 +1,72 @@
-<p>reactive-form works!</p>
-<label>
-  Name:
-  <input type="text" [formControl]="name">
-</label>
-<hr>
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <input type="text" formControlName="email">
-  <input type="password" formControlName="password">
-  <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-    Password is required
-  </div>
-  <button type="submit" [disabled]="!userForm.valid">Submit</button>
-</form>
+<header class="page-header">
+  <p class="page-kicker">Reactive forms</p>
+  <h2 class="page-title">Reactive form example</h2>
+  <p class="page-subtitle">
+    This page demonstrates FormControl, FormGroup, Validators and Material validation UI.
+  </p>
+</header>
+
+<div class="demo-grid">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Simple FormControl</mat-card-title>
+      <mat-card-subtitle>Standalone control example</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" [formControl]="name" placeholder="Enter name">
+      </mat-form-field>
+      <p class="preview-line">Current value: <strong>{{ name.value || 'empty' }}</strong></p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>FormGroup</mat-card-title>
+      <mat-card-subtitle>Email, password and gender</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="demo-stack">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email">
+          @if (userForm.controls.email.invalid && userForm.controls.email.touched) {
+            <mat-error>Please enter a valid email.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+          @if (password.invalid && password.touched) {
+            <mat-error>Password is required.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="actions-row">
+          <button mat-flat-button type="submit" [disabled]="userForm.invalid">Submit</button>
+          <button mat-stroked-button type="button" (click)="userForm.reset(); submittedValue = ''">Reset</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Form value</mat-card-title>
+      <mat-card-subtitle>Reactive state preview</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <pre class="code-preview">{{ submittedValue || (userForm.getRawValue() | json) }}</pre>
+    </mat-card-content>
+  </mat-card>
+</div>

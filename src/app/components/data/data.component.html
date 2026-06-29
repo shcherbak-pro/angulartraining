@@ -1,9 +1,43 @@
-<p appShadow>data works!</p>
-<p>Source: {{ myArr | json }}</p>
-<h1>Array of Tasks</h1>
-<ul>
-  <li *ngFor="let item of myArr" class="box">
-    <div><strong>{{ item.title | reverseStr }}</strong></div>
-    <div>{{ item.desc | uppercase }}</div>
-  </li>
-</ul>
+<header class="page-header">
+  <p class="page-kicker">Services, pipes and directives</p>
+  <h2 class="page-title">Data examples</h2>
+  <p class="page-subtitle">
+    The task list comes from an injectable service, then custom and built-in pipes transform displayed values.
+  </p>
+</header>
+
+<div class="demo-stack">
+  <mat-card appearance="outlined" appShadow>
+    <mat-card-header>
+      <mat-card-title>Task collection</mat-card-title>
+      <mat-card-subtitle>DataService.getAll()</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="task-grid">
+        <mat-card appearance="outlined" *ngFor="let item of myArr; let index = index" class="task-card">
+          <mat-card-header>
+            <mat-card-title>{{ item.title | reverseStr }}</mat-card-title>
+            <mat-card-subtitle>Custom reverseStr pipe</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ item.desc | uppercase }}</p>
+            <mat-chip-set aria-label="Task tags">
+              <mat-chip>Task {{ index + 1 }}</mat-chip>
+              <mat-chip>Uppercase pipe</mat-chip>
+            </mat-chip-set>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Raw source data</mat-card-title>
+      <mat-card-subtitle>Displayed with JsonPipe</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <pre class="code-preview">{{ myArr | json }}</pre>
+    </mat-card-content>
+  </mat-card>
+</div>

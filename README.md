@@ -1,21 +1,27 @@
-# Angular Training
+# Angular Training Lab
 
-This repository contains an Angular training application migrated from Angular 8 to Angular 22.
+A modern Angular 22 training project with a refreshed Material UI.
 
-## What is included
+The project demonstrates common Angular concepts in separate pages:
 
-- Standalone Angular components
-- Angular Router with hash-based routing for GitHub Pages compatibility
-- Template-driven forms
-- Reactive forms
-- Custom directive example
-- Custom pipe example
-- Simple injectable service example
-- GitHub Actions workflow for GitHub Pages deployment
+- routing and route params
+- parent-to-child input
+- child-to-parent output
+- services
+- custom pipes
+- custom directives
+- template-driven forms
+- reactive forms
+
+## Tech stack
+
+- Angular 22
+- Angular Material
+- Standalone components
+- Hash routing for GitHub Pages
+- GitHub Actions deployment
 
 ## Local development
-
-Use Node.js compatible with Angular 22. Angular 22 requires Node.js `^22.22.3 || ^24.15.0 || ^26.0.0`.
 
 ```bash
 npm install --registry=https://registry.npmjs.org/
@@ -28,16 +34,22 @@ npm start
 npm run build
 ```
 
-For GitHub Pages, the workflow uses:
+For GitHub Pages, the workflow builds with a repository-based `base-href`:
 
 ```bash
-npm run build -- --base-href "/${{ github.event.repository.name }}/"
+npm run build -- --base-href "/<repo-name>/"
 ```
 
 ## GitHub Pages
 
-1. Open repository settings.
-2. Go to **Pages**.
-3. Set **Source** to **GitHub Actions**.
-4. Push to `main` or `master`.
-5. Wait for the `Deploy Angular app to GitHub Pages` workflow to finish.
+The deployment workflow is located here:
+
+```text
+.github/workflows/deploy-github-pages.yml
+```
+
+In GitHub repository settings, enable:
+
+```text
+Settings → Pages → Source → GitHub Actions
+```

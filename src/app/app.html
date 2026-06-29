@@ -1,13 +1,40 @@
-<h1>Navigation Panel - Angular Router Links</h1>
-<nav>
-  <a routerLink="/main" routerLinkActive="active">Main</a>
-  <a routerLink="/input/vasyl/23" routerLinkActive="active">Input</a>
-  <a routerLink="/data" routerLinkActive="active">Data</a>
-  <a routerLink="/app-template-driven-form" routerLinkActive="active">Template Driven Form</a>
-  <a routerLink="/form" routerLinkActive="active">Form Example</a>
-  <a routerLink="/reactive" routerLinkActive="active">Reactive Form Example</a>
-</nav>
+<div class="app-shell">
+  <mat-toolbar class="topbar">
+    <a class="brand" routerLink="/main" aria-label="Open home page">
+      <span class="brand-mark">A</span>
+      <span>
+        <strong>{{ title }}</strong>
+        <small>Modern Angular examples</small>
+      </span>
+    </a>
 
-<section class="content">
-  <router-outlet />
-</section>
+    <nav class="nav-links" aria-label="Main navigation">
+      @for (item of navItems; track item.route) {
+        <a
+          mat-button
+          [routerLink]="item.route"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: item.route === '/main' }">
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+  </mat-toolbar>
+
+  <section class="hero">
+    <div>
+      <p class="page-kicker">Angular 22 training project</p>
+      <h1>Reusable examples with a clean Material UI</h1>
+      <p>
+        Routing, inputs, outputs, services, directives, pipes and forms are organized as demo pages,
+        so the project looks like a real small training website instead of a raw code playground.
+      </p>
+    </div>
+  </section>
+
+  <main class="content-wrap">
+    <mat-card class="page-card router-card">
+      <router-outlet />
+    </mat-card>
+  </main>
+</div>

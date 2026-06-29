@@ -1,6 +1,23 @@
-<p>main works! // reverseStr // uppercase</p>
-<p>Example: {{ exampleParent | uppercase }}</p>
+<header class="page-header">
+  <p class="page-kicker">Component communication</p>
+  <h2 class="page-title">Main training page</h2>
+  <p class="page-subtitle">
+    This page demonstrates parent-to-child input, child-to-parent output and a built-in uppercase pipe.
+  </p>
+</header>
 
-<app-child-with-input value="Message from parent" />
+<div class="demo-grid">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Parent state</mat-card-title>
+      <mat-card-subtitle>Value received from child output</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="result-text">{{ (exampleParent || 'Click the child output button to update this value.') | uppercase }}</p>
+    </mat-card-content>
+  </mat-card>
 
-<app-child-with-output (exampleOutput)="exampleMethodParent($event)" />
+  <app-child-with-input value="Message from parent component" />
+
+  <app-child-with-output (exampleOutput)="exampleMethodParent($event)" />
+</div>

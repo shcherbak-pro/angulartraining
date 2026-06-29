@@ -1,2 +1,12 @@
-<p>child-with-output works!</p>
-<button type="button" (click)="exampleMethodChild()">Example Output</button>
+<mat-card appearance="outlined" class="child-card">
+  <mat-card-header>
+    <mat-card-title>Child with output</mat-card-title>
+    <mat-card-subtitle>Emit an event to parent</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ exampleChild }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button type="button" (click)="exampleMethodChild()">Send value to parent</button>
+  </mat-card-actions>
+</mat-card>

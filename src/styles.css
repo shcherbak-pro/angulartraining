@@ -1,11 +1,115 @@
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+@import '@angular/material/prebuilt-themes/azure-blue.css';
 
-body {
-  margin: 0;
-  padding: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  color-scheme: light;
+  --app-bg: #f5f7fb;
+  --app-surface: #ffffff;
+  --app-text: #172033;
+  --app-muted: #667085;
+  --app-border: #dbe3ef;
+  --app-radius: 18px;
 }
 
-.active {
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(25, 118, 210, 0.14), transparent 32rem),
+    linear-gradient(180deg, #f8fbff 0%, var(--app-bg) 48%, #eef2f7 100%);
+  color: var(--app-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+.page-card {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: var(--app-radius) !important;
+  box-shadow: 0 14px 42px rgba(15, 23, 42, 0.08) !important;
+}
+
+.page-header {
+  margin-bottom: 22px;
+}
+
+.page-kicker {
+  margin: 0 0 6px;
+  color: #1967d2;
+  font-size: 0.78rem;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.page-subtitle {
+  max-width: 760px;
+  margin: 10px 0 0;
+  color: var(--app-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.demo-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.code-preview {
+  margin: 0;
+  padding: 16px;
+  overflow: auto;
+  border: 1px solid var(--app-border);
+  border-radius: 14px;
+  background: #0f172a;
+  color: #dbeafe;
+  font: 0.9rem/1.55 Consolas, Monaco, monospace;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #eef6ff;
+  color: #1558b0;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.mat-mdc-card-header-text {
+  width: 100%;
 }

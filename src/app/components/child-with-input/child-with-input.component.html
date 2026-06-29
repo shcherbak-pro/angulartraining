@@ -1,2 +1,10 @@
-<p>child-with-input works!</p>
-<p>Input value: <strong>{{ value() }}</strong></p>
+<mat-card appearance="outlined" class="child-card">
+  <mat-card-header>
+    <mat-card-title>Child with input</mat-card-title>
+    <mat-card-subtitle>@Input-style signal input</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <span class="status-pill">From parent</span>
+    <p>{{ value() }}</p>
+  </mat-card-content>
+</mat-card>

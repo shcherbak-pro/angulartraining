@@ -1,3 +1,38 @@
-<p>input works!</p>
-<div appShadow>Input Param named Name: <strong>{{ name }}</strong></div>
-<div>Input Param named Age: {{ age }}</div>
+<header class="page-header">
+  <p class="page-kicker">Routing</p>
+  <h2 class="page-title">Route parameters</h2>
+  <p class="page-subtitle">This page reads values from the current route and displays them in a clean card layout.</p>
+</header>
+
+<div class="demo-grid">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Current route data</mat-card-title>
+      <mat-card-subtitle>/input/:name/:age</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="param-list">
+      <div appShadow class="param-box">
+        <span>Name</span>
+        <strong>{{ name }}</strong>
+      </div>
+      <div class="param-box">
+        <span>Age</span>
+        <strong>{{ age }}</strong>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-stroked-button routerLink="/input/Oksana/29">Open another example</a>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Training note</mat-card-title>
+      <mat-card-subtitle>ActivatedRoute snapshot</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <pre class="code-preview">name = route.snapshot.paramMap.get('name')
+age = route.snapshot.paramMap.get('age')</pre>
+    </mat-card-content>
+  </mat-card>
+</div>

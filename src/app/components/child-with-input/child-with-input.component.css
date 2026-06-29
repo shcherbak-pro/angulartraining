@@ -1,0 +1,9 @@
+.child-card {
+  height: 100%;
+}
+
+p {
+  margin: 14px 0 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}

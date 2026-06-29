@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ShadowDirective } from '../../directives/shadow.directive';
 
 @Component({
   selector: 'app-input',
+  imports: [ShadowDirective],
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.css']
+  styleUrl: './input.component.css'
 })
-export class InputComponent implements OnInit {
-  public age: number = 36;
-  name: string = 'Serhii';
-  constructor(private router: ActivatedRoute) { }
+export class InputComponent {
+  private readonly route = inject(ActivatedRoute);
 
-  ngOnInit() {
-    this.router.params.subscribe((params) => {this.name = params['name']; this.age = params['age'];})
-  }
-
+  name = this.route.snapshot.paramMap.get('name') ?? 'Serhii';
+  age = Number(this.route.snapshot.paramMap.get('age') ?? 36);
 }

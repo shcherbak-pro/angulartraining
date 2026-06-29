@@ -1,10 +1,9 @@
 .box {
-    width: 150px;  
-    height: 150px;  
-    padding: 5px;  
-    margin: 10px;
-    border: 1px solid black;
-    background: yellowgreen;
-    display: block;
-    }
-    
+  width: 150px;
+  height: 150px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid black;
+  background: yellowgreen;
+  display: block;
+}

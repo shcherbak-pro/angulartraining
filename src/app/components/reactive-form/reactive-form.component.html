@@ -1,13 +1,14 @@
 <p>reactive-form works!</p>
-<label>	Name:
-    <input type="text" [formControl]='name'>
-  </label>
-  <hr>
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="email">
-    <input type="password" formControlName="password">
-    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-        Password is required
-  </div> 
-    <button type="submit" [disabled]="!userForm.valid">Submit</button>
-  </form>
+<label>
+  Name:
+  <input type="text" [formControl]="name">
+</label>
+<hr>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="email">
+  <input type="password" formControlName="password">
+  <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+    Password is required
+  </div>
+  <button type="submit" [disabled]="!userForm.valid">Submit</button>
+</form>

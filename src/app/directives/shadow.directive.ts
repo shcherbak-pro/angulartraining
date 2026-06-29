@@ -4,10 +4,7 @@ import { Directive, ElementRef, Renderer2 } from '@angular/core';
   selector: '[appShadow]'
 })
 export class ShadowDirective {
-
-  constructor(elem: ElementRef, renderer: Renderer2)
-  {
-    renderer.setStyle(elem.nativeElement, 'box-shadow',  '2px 2px 12px #58A362');
+  constructor(element: ElementRef<HTMLElement>, renderer: Renderer2) {
+    renderer.setStyle(element.nativeElement, 'box-shadow', '2px 2px 12px #58A362');
   }
-
 }

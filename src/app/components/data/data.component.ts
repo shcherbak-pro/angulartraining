@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import {DataService} from '../../services/data.service';
+import { Component, inject } from '@angular/core';
+import { JsonPipe, NgFor, UpperCasePipe } from '@angular/common';
+import { DataService } from '../../services/data.service';
+import { ShadowDirective } from '../../directives/shadow.directive';
+import { ReverseStrPipe } from '../../pipes/reverse-str.pipe';
+import { Task } from '../../models/task';
+
 @Component({
   selector: 'app-data',
+  imports: [NgFor, JsonPipe, UpperCasePipe, ShadowDirective, ReverseStrPipe],
   templateUrl: './data.component.html',
-  styleUrls: ['./data.component.css']
+  styleUrl: './data.component.css'
 })
-export class DataComponent implements OnInit {
-  myArr = [];
+export class DataComponent {
+  private readonly dataService = inject(DataService);
 
-  constructor(private data: DataService) { }
-
-  ngOnInit() {
-    this.myArr = this.data.getAll();
-  }
-
+  myArr: Task[] = this.dataService.getAll();
 }

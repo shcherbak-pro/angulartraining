@@ -1,5 +1,6 @@
-<p>main works!//reverseStr//uppercase</p>
-Example: {{exampleParent | uppercase }} 
+<p>main works! // reverseStr // uppercase</p>
+<p>Example: {{ exampleParent | uppercase }}</p>
 
-<app-child-with-output (exampleOutput)="exampleMethodParent($event)"> 
-</app-child-with-output>
+<app-child-with-input value="Message from parent" />
+
+<app-child-with-output (exampleOutput)="exampleMethodParent($event)" />

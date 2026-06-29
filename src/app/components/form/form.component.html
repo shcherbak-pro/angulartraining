@@ -1,40 +1,36 @@
 <hr>
 <h1>My template driven Form</h1>
-<!-- <div [hidden]="!submitted">Form status is  {{submitted}} [submitted]</div> -->
 
 <div *ngIf="!submitted; else elseBlock">Status form is Not Submitted</div>
 <ng-template #elseBlock>Submitted</ng-template>
 
-
-<form #regForm="ngForm" (ngSubmit)='onSubmit()'>
-
-    <div class="form-group">
-        <input #email="ngModel" type="email" class="form-control" placeholder="Enter email" [(ngModel)]="user.email" name="email" required #spy>
-        <br>TODO: remove this: {{spy.className}}
-        <div [hidden]="email.valid" class="alert alert-danger">
-            Name is required
-        </div>
+<form #regForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <input #email="ngModel" type="email" class="form-control" placeholder="Enter email" [(ngModel)]="user.email" name="email" required #spy>
+    <br>TODO: remove this: {{ spy.className }}
+    <div [hidden]="email.valid" class="alert alert-danger">
+      Name is required
     </div>
+  </div>
 
- 
-    <div class="form-group">
-      <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" name="password" required>
-    </div>
-    <div class="form-group">
-      <select id="select" class="form-control" [(ngModel)]="user.gender" name="gender">
-        <option *ngFor="let opt of gender" [value]="opt">{{opt}}</option>
-      </select>
+  <div class="form-group">
+    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" name="password" required>
+  </div>
 
+  <div class="form-group">
+    <select id="select" class="form-control" [(ngModel)]="user.gender" name="gender">
+      <option *ngFor="let opt of gender" [value]="opt">{{ opt }}</option>
+    </select>
+  </div>
 
-    </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+
   <button type="submit" class="btn btn-primary" [disabled]="!regForm.form.valid">Submit</button>
- </form>
+</form>
 
- <hr>
- actual value of user object:
- {{ user | json}} 
- 
+<hr>
+actual value of user object:
+{{ user | json }}

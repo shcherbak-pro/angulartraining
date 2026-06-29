@@ -1,27 +1,43 @@
-# DemoApp
+# Angular Training
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
+This repository contains an Angular training application migrated from Angular 8 to Angular 22.
 
-## Development server
+## What is included
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Standalone Angular components
+- Angular Router with hash-based routing for GitHub Pages compatibility
+- Template-driven forms
+- Reactive forms
+- Custom directive example
+- Custom pipe example
+- Simple injectable service example
+- GitHub Actions workflow for GitHub Pages deployment
 
-## Code scaffolding
+## Local development
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Use Node.js compatible with Angular 22. Angular 22 requires Node.js `^22.22.3 || ^24.15.0 || ^26.0.0`.
+
+```bash
+npm install --registry=https://registry.npmjs.org/
+npm start
+```
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+npm run build
+```
 
-## Running unit tests
+For GitHub Pages, the workflow uses:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm run build -- --base-href "/${{ github.event.repository.name }}/"
+```
 
-## Running end-to-end tests
+## GitHub Pages
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Open repository settings.
+2. Go to **Pages**.
+3. Set **Source** to **GitHub Actions**.
+4. Push to `main` or `master`.
+5. Wait for the `Deploy Angular app to GitHub Pages` workflow to finish.

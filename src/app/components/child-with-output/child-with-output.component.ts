@@ -1,21 +1,15 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-child-with-output',
   templateUrl: './child-with-output.component.html',
-  styleUrls: ['./child-with-output.component.css']
+  styleUrl: './child-with-output.component.css'
 })
-export class ChildWithOutputComponent implements OnInit {
-
+export class ChildWithOutputComponent {
   exampleChild = 'Hello';
-  @Output() exampleOutput = new EventEmitter<string>();
+  exampleOutput = output<string>();
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  exampleMethodChild() {
+  exampleMethodChild(): void {
     this.exampleOutput.emit(this.exampleChild);
   }
 }

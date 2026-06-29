@@ -1,12 +1,9 @@
 <p appShadow>data works!</p>
-Source: {{myArr|json}}
+<p>Source: {{ myArr | json }}</p>
 <h1>Array of Tasks</h1>
 <ul>
-  <li *ngFor="let item of myArr" class='box'>
+  <li *ngFor="let item of myArr" class="box">
     <div><strong>{{ item.title | reverseStr }}</strong></div>
-    <div>{{ item.desc |uppercase}}</div>
+    <div>{{ item.desc | uppercase }}</div>
   </li>
 </ul>
-
-
-

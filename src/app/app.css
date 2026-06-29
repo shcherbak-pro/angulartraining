@@ -1,0 +1,19 @@
+nav, h1, .content {
+  background: antiquewhite;
+  padding: 8px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+nav a {
+  border: 1px dotted grey;
+  margin: 3px;
+  padding: 4px 8px;
+  color: #0645ad;
+  text-decoration: none;
+}

@@ -1,36 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
+  imports: [ReactiveFormsModule],
   templateUrl: './reactive-form.component.html',
-  styleUrls: ['./reactive-form.component.css']
+  styleUrl: './reactive-form.component.css'
 })
-export class ReactiveFormComponent implements OnInit {
+export class ReactiveFormComponent {
   name = new FormControl('');
 
   userForm = new FormGroup({
-    email: new FormControl('test@gmail.com'),
-    password: new FormControl('',Validators.required),
-    gender: new FormControl(''),
+    email: new FormControl('test@gmail.com', { nonNullable: true }),
+    password: new FormControl('', { nonNullable: true, validators: Validators.required }),
+    gender: new FormControl('', { nonNullable: true })
   });
- 
-  constructor() { }
 
-  ngOnInit() {
+  onSubmit(): void {
+    console.warn(this.userForm.getRawValue());
   }
 
-  onSubmit() {
-    console.warn(this.userForm.value);
+  get password(): FormControl<string> {
+    return this.userForm.controls.password;
   }
-  get email() {
-    return this.userForm.get('email');
- }
- get password() {
-  return this.userForm.get('password');
-}
-
-  
-
 }
